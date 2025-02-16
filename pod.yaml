@@ -1,0 +1,20 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: demo-pod # pod name
+  annotations: 
+     name: This is sample lab.
+spec:
+  containers:
+    - name: container-1 # container name
+      image: nginx
+      ports:
+        - containerPort: 80
+    - name: container-2
+      image: ubuntu
+      command: ["/bin/bash","-c","while true; do echo hello; sleep 5; done"]
+      env:
+        - name: MYNAME
+          value: HarryPotter
+  restartPolicy: Never
+
