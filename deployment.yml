@@ -1,0 +1,32 @@
+kind: Deployment 
+apiVersion: apps/v1
+metadata:
+  name: deployment-pod
+  labels: 
+    name: deployment 
+spec: 
+  replicas: 3
+  selector: 
+    matchLabels: 
+      name: deployment 
+  template: 
+    metadata:
+      name: deploy-pod 
+      labels: 
+        name: deployment 
+    spec: 
+      containers:
+        - name: con-01
+          image: ubuntu
+          command: ["/bin/bash","-c","while true; do echo hello-priya; sleep 5; done"]
+
+# kubectl get deploy
+# kubectl get pods
+# kubectl get rs
+
+# now rollback to previous version-->
+
+# kubectl rollout status deployment mydeployments    (it will be on previous version.)
+# kubectl rollout history deployment mydeployments
+# kubectl rollout undo deploy/mydeployments
+# kubectl get pods
