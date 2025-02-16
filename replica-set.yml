@@ -1,0 +1,30 @@
+# replica set works with set based and equality based selector.
+
+kind: ReplicaSet 
+apiVersion: apps/v1
+metadata: 
+  name: my-replica-set
+spec: 
+  replicas: 3
+  selector: 
+     matchExpressions:
+       - {key: myname, operator: In, values: [k8s,devops,aws]}
+  template:
+    metadata: 
+      name: test-pod
+      labels: 
+        myname: aws
+    spec: 
+      containers: 
+        - name: ubuntu-con
+          image: ubuntu
+          command: ["/bin/bash","-c", "while true; do echo hello; sleep 5; done"]
+
+# kubectl apply -f replica-set.yml
+# kubectl get rs
+# kubectl get pods
+# kubetcl scale --replicas=7 rs/my-replica-set
+# kubectl delete rs/my-replica-set
+         
+       
+       
