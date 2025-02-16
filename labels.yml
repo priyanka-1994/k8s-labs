@@ -1,0 +1,13 @@
+# labels are the mechanism use to organise k8s objects.
+kind: Pod
+apiVersion: v1
+metadata:
+   name: label 
+   labels: 
+      env: production
+      class: pod
+spec:
+  containers:
+    - name: container-1
+      image: ubuntu
+      command: ["/bin/bash","-c","while true; do echo hello; sleep 5; done"]
