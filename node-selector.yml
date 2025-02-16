@@ -1,0 +1,14 @@
+# Intent: The particular pod should work on specific pod.
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: node-label
+  labels: 
+     name: production
+spec: 
+  containers:
+    - name: node-nginx
+      image: nginx
+  node-selector:
+    hardware: t2.medium
