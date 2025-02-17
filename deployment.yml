@@ -18,7 +18,7 @@ spec:
       containers:
         - name: con-01
           image: ubuntu
-          command: ["/bin/bash","-c","while true; do echo hello-priya; sleep 5; done"]
+          command: ["/bin/bash","-c","while true; do echo welcome priya; sleep 5; done"]
 
 # kubectl get deploy
 # kubectl get pods
@@ -29,4 +29,5 @@ spec:
 # kubectl rollout status deployment mydeployments    (it will be on previous version.)
 # kubectl rollout history deployment mydeployments
 # kubectl rollout undo deploy/mydeployments
+# kubectl rollout undo deployment/mydeployments --to-revision=4
 # kubectl get pods

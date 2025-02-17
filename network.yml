@@ -1,0 +1,20 @@
+# How containers communicate within one pod?
+
+kind: Pod
+apiVersion: v1
+metadata: 
+  name: network-pod
+spec: 
+  containers: 
+    - name: con-1 
+      image: ubuntu
+      command: ["/bin/bash","-c","while true; do echo hello; sleep 5; done"]
+    - name: con-2
+      image: nginx
+      ports:
+        - containerPort: 80
+
+# kubectl get pods
+# kubectl exec network-pod -it -c con-1 -- /bin/bash
+# install curl and then run curl localhost:80
+# both are communicating..
