@@ -8,7 +8,7 @@ spec:
   containers: 
     - name: con-1 
       image: ubuntu
-      command: ["/bin/bash","-c","while true; do echo hello; sleep 5; done"]
+      command: ["/bin/bash","-c","while true; do echo hell0-priyanka_kale; sleep 5; done"]
     - name: con-2
       image: nginx
       ports:
