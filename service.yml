@@ -1,0 +1,36 @@
+# services can only run between ports 30,000-32,767
+# clusterIP
+
+kind: Deployment 
+apiVersion: apps/v1
+metadata: 
+  name: my-deployment
+spec:  
+  replicas: 3
+  selector:
+    matchLabels: 
+      name: deployment
+  template:
+    metadata:
+      name: deployment-pod
+      labels:
+        name: deployment 
+    spec: 
+      containers:
+        - name: con1 
+          image: httpd
+          ports:  
+            - containerPort: 80
+
+---
+kind: Service 
+apiVersion: v1
+metadata:
+  name: demo-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector: 
+    name: deployment 
+  type: ClusterIP
